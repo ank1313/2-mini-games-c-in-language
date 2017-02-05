@@ -1,0 +1,1099 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<stdlib.h>
+#include<dos.h>
+#include<string.h>
+void game1();
+void game2();
+void game1()
+{
+int i,k=0,x=600,y=rand()%400,Myscore=0,Mylives=3;
+char choice,score[20],lives[20],ch;
+setbkcolor(GREEN);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+for(i=0;i<=120;i++)
+{
+	outtextxy(i,240,"Welcome To Underwater Bubble Shooting");
+	outtextxy(515,430,"Loading...");
+	delay(10);
+	cleardevice();
+}
+outtextxy(120,240,"Welcome To Underwater Bubble Shooting");
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+outtextxy(415,340,"Press Enter key to continue...");
+do
+{
+ch=getch();
+}while(ch!=13);
+cleardevice();
+setbkcolor(BLACK);
+setcolor(RED);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+outtextxy(220,20,"ABOUT THE GAME");
+delay(500);
+line(218,48,392,48);
+delay(500);
+setcolor(WHITE);
+settextstyle(SANS_SERIF_FONT,HORIZ_DIR,1);
+outtextxy(0,80,"It is the year 2050.World War III has begun.");
+delay(1500);
+outtextxy(0,110,"The oceanic species are becoming endangered.");
+delay(1500);
+outtextxy(0,140,"Protect the oceanic species by shooting bubbles at the missiles.");
+delay(1500);
+setcolor(RED);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+outtextxy(240,180,"INSTRUCTIONS");
+delay(500);
+line(240,207,373,207);
+delay(500);
+setcolor(WHITE);
+settextstyle(SANS_SERIF_FONT,HORIZ_DIR,1);
+outtextxy(0,227,"1.Use the arrow keys to move the character up and down.");
+delay(1500);
+outtextxy(0,257,"2.Press Z to shoot bubbles.");
+delay(1500);
+outtextxy(0,287,"3.Press any other key to stop the character.");
+delay(1500);
+outtextxy(0,317,"4.Shooting one missile will fetch 10 points.");
+delay(1500);
+outtextxy(0,347,"5.Press Esc to exit from the game.");
+delay(1500);
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+outtextxy(465,340,"Press Enter key to continue...");
+do
+{
+ch=getch();
+}while(ch!=13);
+cleardevice();
+setbkcolor(BLUE);
+arc(20,240+k,10,350+k,20);
+line(40,237+k,48,237+k);
+line(40,243+k,48,243+k);
+line(48,237+k,48,243+k);
+circle(30,235+k,2);
+sprintf(lives,"lives=%d",Mylives);
+outtextxy(565,450,lives);
+sprintf(score,"score=%d",Myscore);
+outtextxy(565,460,score);
+do
+{
+circle(x,y,5);
+delay(8);
+setcolor(BLUE);
+circle(x,y,10);
+setcolor(WHITE);
+x--;
+circle(x,y,5);
+delay(8);
+if(x==0)
+{
+	cleardevice();
+	x=600;
+	y=rand()%400;
+	Mylives--;
+	if(Mylives==0)
+	{
+		setbkcolor(BLACK);
+		setcolor(GREEN);
+		settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+		outtextxy(280,200,"GAME OVER");
+		outtextxy(260,230,"Your");
+		outtextxy(332,230,score);
+		do
+		{
+			ch=getch();
+		}while(ch!=13);
+		exit(0);
+	}
+	sprintf(lives,"lives=%d",Mylives);
+	outtextxy(565,450,lives);
+	sprintf(score,"score=%d",Myscore);
+	outtextxy(565,460,score);
+	circle(x,y,5);
+	delay(4);
+	setcolor(BLUE);
+	circle(x,y,10);
+	setcolor(WHITE);
+	x--;
+	circle(x,y,5);
+	delay(1);
+	arc(20,240+k,10,350,20);
+	line(40,237+k,48,237+k);
+	line(40,243+k,48,243+k);
+	line(48,237+k,48,243+k);
+	circle(30,235+k,2);
+	delay(5);
+	setcolor(BLUE);
+	arc(20,240+k,10,350,20);
+	line(40,237+k,48,237+k);
+	line(40,243+k,48,243+k);
+	line(48,237+k,48,243+k);
+	circle(30,235+k,2);
+	setcolor(WHITE);
+	k++;
+	arc(20,240+k,10,350,20);
+	line(40,237+k,48,237+k);
+	line(40,243+k,48,243+k);
+	line(48,237+k,48,243+k);
+	circle(30,235+k,2);
+	setcolor(WHITE);
+	delay(5);
+}
+	if(kbhit())
+	{
+		choice=getch();
+		if(choice==72)
+		{
+			while(!kbhit())
+			{
+				if(k>-230)
+				{
+					circle(x,y,5);
+					delay(3);
+					setcolor(BLUE);
+					circle(x,y,10);
+					setcolor(WHITE);
+					x--;
+					circle(x,y,5);
+					delay(1);
+					arc(20,240+k,10,350,20);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					delay(5);
+					setcolor(BLUE);
+					arc(20,240+k,10,350,20);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					setcolor(WHITE);
+					k--;
+					arc(20,240+k,10,350,20);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					delay(5);
+					if(x==0)
+					{
+						cleardevice();
+						x=600;
+						y=rand()%400;
+						Mylives--;
+						if(Mylives==0)
+						{
+							setbkcolor(BLACK);
+							setcolor(GREEN);
+							settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+							outtextxy(300,200,"GAME OVER");
+							outtextxy(260,230,"Your");
+							outtextxy(332,230,score);
+							do
+							{
+								ch=getch();
+							}while(ch!=13);
+							exit(0);
+						}
+						sprintf(lives,"lives=%d",Mylives);
+						outtextxy(565,450,lives);
+						sprintf(score,"score=%d",Myscore);
+						outtextxy(565,460,score);
+						circle(x,y,5);
+						delay(4);
+						setcolor(BLUE);
+						circle(x,y,10);
+						setcolor(WHITE);
+						x--;
+						circle(x,y,5);
+						delay(1);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						delay(5);
+						setcolor(BLUE);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						k++;
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						delay(5);
+					}
+				}
+			}
+		}
+		if(choice==80)
+		{
+			while(!kbhit())
+			{
+				if(k<230)
+				{
+					circle(x,y,5);
+					delay(4);
+					setcolor(BLUE);
+					circle(x,y,10);
+					setcolor(WHITE);
+					x--;
+					circle(x,y,5);
+					delay(1);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					delay(5);
+					setcolor(BLUE);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					setcolor(WHITE);
+					k++;
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					setcolor(WHITE);
+					delay(5);
+					if(x==0)
+					{
+						cleardevice();
+						x=600;
+						y=rand()%400;
+						Mylives--;
+						if(Mylives==0)
+						{
+							setbkcolor(BLACK);
+							setcolor(GREEN);
+							settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+							outtextxy(280,200,"GAME OVER");
+							outtextxy(260,230,"Your");
+							outtextxy(332,230,score);
+							do
+							{
+								ch=getch();
+							}while(ch!=13);
+							exit(0);
+						}
+						sprintf(lives,"lives=%d",Mylives);
+						outtextxy(565,450,lives);
+						sprintf(score,"score=%d",Myscore);
+						outtextxy(565,460,score);
+						circle(x,y,5);
+						delay(4);
+						setcolor(BLUE);
+						circle(x,y,10);
+						setcolor(WHITE);
+						x--;
+						circle(x,y,5);
+						delay(1);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						delay(5);
+						setcolor(BLUE);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						k++;
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						delay(5);
+					}
+				}
+			}
+		}
+		if(choice=='z')
+		{
+			while(!kbhit())
+			{
+				for(i=0;i<=590;)
+				{
+					circle(49+i,240+k,5);
+					delay(1);
+					setcolor(BLUE);
+					circle(49+i,240+k,5);
+					setcolor(WHITE);
+					i=i+20;
+					circle(49+i,240+k,5);
+					delay(1);
+					circle(x,y,5);
+					delay(10);
+					setcolor(BLUE);
+					circle(x,y,10);
+					setcolor(WHITE);
+					x--;
+					circle(x,y,5);
+					delay(3);
+					arc(20,240+k,10,350,20);
+					line(40,237+k,48,237+k);
+					line(40,243+k,48,243+k);
+					line(48,237+k,48,243+k);
+					circle(30,235+k,2);
+					delay(1);
+					if(x==0)
+					{
+						cleardevice();
+						x=600;
+						y=rand()%400;
+						Mylives--;
+						if(Mylives==0)
+						{
+							setbkcolor(BLACK);
+							setcolor(GREEN);
+							settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+							outtextxy(280,200,"GAME OVER");
+							outtextxy(260,230,"Your");
+							outtextxy(332,230,score);
+							do
+							{
+							ch=getch();
+							}while(ch!=13);
+							exit(0);
+						}
+						sprintf(lives,"lives=%d",Mylives);
+						outtextxy(565,450,lives);
+						sprintf(score,"score=%d",Myscore);
+						outtextxy(565,460,score);
+						circle(x,y,5);
+						delay(4);
+						setcolor(BLUE);
+						circle(x,y,10);
+						setcolor(WHITE);
+						x--;
+						circle(x,y,5);
+						delay(1);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						delay(5);
+						setcolor(BLUE);
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						k++;
+						arc(20,240+k,10,350,20);
+						line(40,237+k,48,237+k);
+						line(40,243+k,48,243+k);
+						line(48,237+k,48,243+k);
+						circle(30,235+k,2);
+						setcolor(WHITE);
+						delay(5);
+					}
+					if(((i-20<=x)&&(i+20>=x))&&((y-10<=240+k)&&(y+10>=240+k)))
+					{
+						sound(1013);
+						delay(5);
+						nosound();
+						cleardevice();
+						x=600;
+						y=rand()%400;
+						Myscore=Myscore+10;
+						sprintf(score,"score=%d",Myscore);
+						outtextxy(565,460,score);
+						sprintf(lives,"lives=%d",Mylives);
+						outtextxy(565,450,lives);
+					}
+				}
+			}
+		}
+	}
+}
+while(choice!=27);
+getch();
+}
+void game2()
+{
+int k=0,i=0,j=0,l=0,m=0,n=0;
+int a=rand()%470,b=rand()%470,c=rand()%310,d=640-rand()%310,Myscore=0;
+char choice,score[20];
+setbkcolor(GREEN);
+for(i=0;i<=160;i++)
+{
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+outtextxy(i,240,"Welcome To Save The Twins");
+outtextxy(515,430,"Loading...");
+delay(10);
+cleardevice();
+}
+outtextxy(160,240,"Welcome To Save The Twins");
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+outtextxy(415,340,"Press any key to continue...");
+getch();
+cleardevice();
+setbkcolor(BLACK);
+setcolor(RED);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+outtextxy(220,20,"ABOUT THE GAME");
+delay(500);
+line(218,48,392,48);
+delay(500);
+setcolor(WHITE);
+settextstyle(SANS_SERIF_FONT,HORIZ_DIR,1);
+outtextxy(0,80,"Once Upon A time India Pakistan War was going on.");
+delay(1500);
+outtextxy(0,100,"Two twin brothers Santa and Banta got separated from each other.");
+delay(1500);
+outtextxy(0,120,"They had lost both their arms in the war");
+delay(1500);
+outtextxy(0,140,"and blood was flowing from their legs.");
+delay(1500);
+outtextxy(0,160,"Help the twin brothers survive untill the war is over.");
+setcolor(RED);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+outtextxy(240,190,"INSTRUCTIONS");
+delay(500);
+line(240,217,373,217);
+delay(500);
+setcolor(WHITE);
+settextstyle(SANS_SERIF_FONT,HORIZ_DIR,1);
+outtextxy(0,237,"1.Santa is at the left whereas Banta is at the right.");
+delay(1500);
+outtextxy(0,257,"2.Use the keys w,a,s,d to control Santa.");
+delay(1500);
+outtextxy(0,277,"3.Use the keys i,j,k,l to control Banta.");
+delay(1500);
+outtextxy(0,297,"4.Press only one key at a time.");
+delay(1500);
+outtextxy(0,317,"5.Do not touch the brown line as player will die due to electric shock.");
+delay(1500);
+outtextxy(0,337,"6.Each survival from weapon will fetch 10 points.");
+delay(1500);
+outtextxy(0,357,"7.Score 1000 points to finish the game.");
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+outtextxy(415,340,"Press any key to continue...");
+getch();
+cleardevice();
+setcolor(BROWN);
+line(320,0,320,480);
+setcolor(GREEN);
+circle(226,419+k,13);
+circle(439,419+k,13);
+setcolor(LIGHTBLUE);
+circle(221,413+k,2);
+circle(231,413+k,2);
+circle(434,413+k,2);
+circle(444,413+k,2);
+setcolor(CYAN);
+ellipse(226,442+k,0,360,15,10);
+ellipse(439,442+k,0,360,15,10);
+setcolor(LIGHTGRAY);
+arc(226,419+k,240,310,8);
+arc(439,419+k,240,310,8);
+setcolor(RED);
+line(226,452+k,220,478+k);
+line(226,452+k,232,478+k);
+line(439,452+k,433,478+k);
+line(439,452+k,445,478+k);
+sprintf(score,"score=%d",Myscore);
+setcolor(WHITE);
+outtextxy(565,460,score);
+do
+{
+	setcolor(BROWN);
+	circle(10+i,a,5);
+	delay(5);
+	circle(630-i,b,5);
+	delay(5);
+	circle(c,10+n,5);
+	delay(5);
+	circle(d,10+n,5);
+	delay(5);
+	setcolor(BLACK);
+	circle(10+i,a,5);
+	circle(630-i,b,5);
+	circle(c,10+n,5);
+	circle(d,10+n,5);
+	i=i+1;
+	n=n+1;
+	setcolor(BROWN);
+	circle(10+i,a,5);
+	circle(630-i,b,5);
+	circle(c,10+n,5);
+	circle(d,10+n,5);
+	if(226+l>=305)
+	{
+	cleardevice();
+	setbkcolor(BLACK);
+	setcolor(GREEN);
+	settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+	outtextxy(260,200,"GAME OVER.");
+	outtextxy(0,230,"Santa died because of electric shock.");
+	outtextxy(260,260,"Your");
+	outtextxy(332,260,score);
+	getch();
+	exit(0);
+	}
+	if(439+m<=335)
+	{
+	cleardevice();
+	setbkcolor(BLACK);
+	setcolor(GREEN);
+	settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+	outtextxy(260,200,"GAME OVER.");
+	outtextxy(0,230,"Banta died because of electric shock.");
+	outtextxy(260,260,"Your");
+	outtextxy(332,260,score);
+	getch();
+	exit(0);
+	}
+	if(Myscore==1000)
+	{
+		cleardevice();
+		setbkcolor(BLACK);
+		setcolor(GREEN);
+		settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+		outtextxy(220,200,"CONGRATULATIONS!");
+		outtextxy(210,230,"The War is Over...");
+		outtextxy(0,260,"Santa and Banta live happily thereafter.");
+		outtextxy(240,290,"Your");
+		outtextxy(312,290,score);
+		getch();
+		exit(0);
+	}
+	  if(((i>=211+l)&&(i<=241+l))&&((a>=401+k)&&(a<=478+k))
+	  ||((630-i>=429+m)&&(630-i<=449+m))&&((b>=401+j)&&(b<=478+j))
+	  ||((630-i>=206+l)&&(630-i<=236+l))&&((b>=401+k)&&(b<=478+k))
+	  ||((i>=429+m)&&(i<=454+m))&&((a>=401+j)&&(a<=478+j))
+	  ||((c>=211+l)&&(c<=241+l))&&((n>=401+k)&&(n<=478+k))
+	  ||((d>=424+m)&&(d<=449+m))&&((n>=401+j)&&(n<=478+j)))
+	{
+	getch();
+	cleardevice();
+	setbkcolor(BLACK);
+	setcolor(GREEN);
+	settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+	outtextxy(260,200,"GAME OVER.");
+	outtextxy(0,230,"You failed to save both Santa and Banta.");
+	outtextxy(260,260,"Your");
+	outtextxy(332,260,score);
+	getch();
+	exit(0);
+	}
+	if(i==310);
+	{
+		line(320,0,320,480);
+	}
+	if(i==630)
+	{
+		a=rand()%470;
+		b=rand()%470;
+		i=0;
+		setcolor(BLACK);
+		outtextxy(565,460,score);
+		Myscore=Myscore+10;
+		sprintf(score,"score=%d",Myscore);
+		setcolor(WHITE);
+		outtextxy(565,460,score);
+	}
+	if(n==470)
+	{
+		c=rand()%310;
+		d=640-rand()%310;
+		n=0;
+		setcolor(BLACK);
+		outtextxy(565,460,score);
+		Myscore=Myscore+10;
+		sprintf(score,"score=%d",Myscore);
+		setcolor(WHITE);
+		outtextxy(565,460,score);
+	}
+	if(kbhit())
+	{
+		choice=getch();
+		if(choice=='w')
+		{
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			setcolor(BLACK);
+			circle(226+l,419+k,13);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			ellipse(226+l,442+k,0,360,15,10);
+			arc(226+l,419+k,240,310,8);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			k=k-1;
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='i')
+		{
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			setcolor(BLACK);
+			circle(439+m,419+j,13);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			ellipse(439+m,442+j,0,360,15,10);
+			arc(439+m,419+j,240,310,8);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			j=j-1;
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='s')
+		{
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			setcolor(BLACK);
+			circle(226+l,419+k,13);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			ellipse(226+l,442+k,0,360,15,10);
+			arc(226+l,419+k,240,310,8);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			k=k+1;
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='k')
+		{
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			setcolor(BLACK);
+			circle(439+m,419+j,13);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			ellipse(439+m,442+j,0,360,15,10);
+			arc(439+m,419+j,240,310,8);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			j=j+1;
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='d')
+		{
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			setcolor(BLACK);
+			circle(226+l,419+k,13);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			ellipse(226+l,442+k,0,360,15,10);
+			arc(226+l,419+k,240,310,8);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			l=l+1;
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='a')
+		{
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			setcolor(BLACK);
+			circle(226+l,419+k,13);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			ellipse(226+l,442+k,0,360,15,10);
+			arc(226+l,419+k,240,310,8);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			l=l-1;
+			setcolor(GREEN);
+			circle(226+l,419+k,13);
+			setcolor(LIGHTBLUE);
+			circle(221+l,413+k,2);
+			circle(231+l,413+k,2);
+			setcolor(CYAN);
+			ellipse(226+l,442+k,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(226+l,419+k,240,310,8);
+			setcolor(RED);
+			line(226+l,452+k,220+l,478+k);
+			line(226+l,452+k,232+l,478+k);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='l')
+		{
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			setcolor(BLACK);
+			circle(439+m,419+j,13);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			ellipse(439+m,442+j,0,360,15,10);
+			arc(439+m,419+j,240,310,8);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			m=m+1;
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+		if(choice=='j')
+		{
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			setcolor(BLACK);
+			circle(439+m,419+j,13);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			ellipse(439+m,442+j,0,360,15,10);
+			arc(439+m,419+j,240,310,8);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			m=m-1;
+			setcolor(GREEN);
+			circle(439+m,419+j,13);
+			setcolor(LIGHTBLUE);
+			circle(434+m,413+j,2);
+			circle(444+m,413+j,2);
+			setcolor(CYAN);
+			ellipse(439+m,442+j,0,360,15,10);
+			setcolor(LIGHTGRAY);
+			arc(439+m,419+j,240,310,8);
+			setcolor(RED);
+			line(439+m,452+j,433+m,478+j);
+			line(439+m,452+j,445+m,478+j);
+			delay(20);
+			if(i==310);
+			{
+				line(320,0,320,480);
+			}
+			if(i==630)
+			{
+				a=rand()%470;
+				b=rand()%470;
+				i=0;
+			}
+			if(n==470)
+			{
+				c=rand()%310;
+				d=640-rand()%310;
+				n=0;
+			}
+		}
+	}
+}
+while(choice!=27);
+getch();
+}
+void main()
+{
+int gd=DETECT,gm;
+int press;
+initgraph(&gd,&gm,"C:\\TC\\BGI");
+setbkcolor(RED);
+outtextxy(0,0,"Welcome to the collection of mini games.Which game do you want to play?");
+outtextxy(0,20,"1.Underwater Bubble Shooting");
+outtextxy(0,40,"2.Save the twins");
+outtextxy(0,60,"3.Exit from the menu");
+outtextxy(0,370,"Made By:");
+outtextxy(0,390,"ANKIT(14103228)");
+outtextxy(0,410,"SANDEEP(14102065)");
+outtextxy(0,430,"DIPAK(14103214)");
+outtextxy(0,450,"SHIVAM(14103300)");
+outtextxy(0,470,"(BATCH-B7)");
+scanf("%d",&press);
+if(press==3)
+exit(0);
+if(press==1)
+game1();
+if(press==2)
+game2();
+closegraph();
+}
+
+
