@@ -1,4 +1,4 @@
-# 2-mini-games-c-in-language
+# 2-mini-games-in-C-language
 
 This project consists of 2 mini-games developed using the C programming language.These two games by been made by using various concepts of C such as loops(for,while,do-while),nested loops, if else statements, arrays, and mostly graphics.
 
